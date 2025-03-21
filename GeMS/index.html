@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="BeSplat: Gaussian Splatting from a Single Blurry Image and Event Stream">
+  <meta name="keywords" content="Gaussian splatting, Event Stream, Pose Estimation, Deblurring, Novel View Synthesis, 3D from a Single Image">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BeSplat</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/smiling-face-with-horns_1f608.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+
+
+  <style>
+     /* Container to hold the media items in a row */
+.media-wrapper {
+  display: flex;
+  justify-content: space-between; /* Space items evenly */
+  gap: 10px;  /* Optional: space between media items */
+  flex-wrap: wrap;  /* Ensures items wrap to the next row if space is not enough */
+}
+
+/* Styling for individual media containers */
+.media-container {
+  position: relative;
+  width: 18%;  /* Adjust this to fit 5 items in the row */
+  overflow: hidden;
+}
+
+/* Image that is displayed initially */
+.hover-image {
+  
+  width: 300px;  /* Set the fixed width for the image */
+  height: 200px; /* Set the fixed height for the image */
+  display: block;
+  object-fit: cover;  /* Ensures image covers the container properly */
+}
+
+/* GIF that is hidden initially and displayed on hover */
+.hover-gif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;  /* Set the fixed width for the GIF */
+  height: 200px; /* Set the fixed height for the GIF */
+  display: none;
+  object-fit: cover;
+}
+
+/* Show GIF on hover */
+.media-container:hover .hover-image {
+  display: none;  /* Hide image on hover */
+}
+
+.media-container:hover .hover-gif {
+  display: block;  /* Show GIF on hover */
+}
+
+
+h2.title {
+    text-align: center;  /* Centers the heading */
+    font-size: 24px;  /* Customize the font size of the heading */
+    margin-bottom: 20px; /* Adds space below the heading */
+  }
+
+    @keyframes blink {
+            0%, 100% {
+                opacity: 1; /* 不透明 */
+            }
+            50% {
+                opacity: 0; /* 透明 */
+            }
+    }
+
+    .blinking-text {
+        font-size: 20px; /* 字体大小 */
+        color: red; /* 字体颜色 */
+        animation: blink 1s infinite; /* 动画持续时间和无限循环 */
+    }
+
+    .large-text {
+            font-size: 20px; /* 增大字体大小 */
+    }
+
+
+
+    .letter {
+      display: inline-block;
+      animation: colorShift 2s ease-in-out infinite; /* Animation for color shift */
+    }
+
+    .letter:nth-child(odd) {
+      animation-delay: 0s;
+    }
+
+    .letter:nth-child(even) {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes colorShift {
+      0%, 100% {
+        color: red;
+      }
+      50% {
+        color: blue;
+      }
+    }
+
+
+
+/* Set the video to cover the entire background */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the whole background */
+  z-index: -1; /* Sends the video to the back */
+}
+
+/* Your content will be displayed on top of the video */
+.hero, .teaser {
+  position: relative;
+  z-index: 1; /* Ensures the content is on top of the video */
+  color: black; /* Makes text visible over the video */
+}
+
+
+  </style>
+
+  
+
+  
+</head>
+<body>
+
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><font color="#FF0000">BeSplat</font>: Gaussian <span style="font-variant-ligatures: none;"><font color="#FF0000">Splat</font>ting</span> from a Single <font color="#FF0000">B</font>lurry Image and <font color="#FF0000">E</font>vent Stream</h1>
+       
+
+
+        
+        <h6 class="title is-3 publication-title">
+          WACV 2025 Workshop<br>
+          
+      </h6>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/gopi-raju-matta-1b5347105">Gopi Raju Matta</a>
+            </span> &nbsp &nbsp
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/reddypalli-trisha">Reddypalli Trisha</a>
+            </span>&nbsp &nbsp
+            <span class="author-block">
+              <a href="https://www.ee.iitm.ac.in/kmitra">Kaushik Mitra</a>
+            </span>&nbsp &nbsp
+          </div>
+
+   
+          
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2412.19370"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code Coming Soon</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      
+    </div>
+  </div>
+</section> -->
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <image src="./static/images/event_rgb_fusion.png"  class="img-responsive" alt="overview"><br><br>
+
+        <div class="content has-text-justified">
+          <p style="font-size: 20px;">Starting from a <b>single motion-blurred image</b> and its corresponding <b>event stream</b>, <b><font color="#0000CD">BeSplat</font></b> jointly learns the scene representation through Gaussian Splatting and recovers the camera motion trajectories effectively. 
+            It demonstrates state-of-the-art performance on both synthetic and real datasets, excelling in deblurring, view-consistent novel view synthesis, and rendering sharp images with faster training and lower GPU memory consumption.</p>
+        </div>
+
+
+
+
+        <h2 class="title is-3" style="color: black;">Abstract</h2>
+        <div class="content has-text-justified">
+          <p style="font-size: 20px;">
+            Novel view synthesis has been greatly enhanced by the development of radiance field methods. The introduction of 3D Gaussian Splatting (3DGS) has effectively addressed key challenges, such as long training times and slow rendering speeds, typically associated with Neural Radiance Fields (NeRF), while maintaining high-quality reconstructions. 
+          
+            In this work (BeSplat), we demonstrate the recovery of sharp radiance field (Gaussian splats) from a single motion-blurred image and its corresponding event stream. 
+          </p>
+          <p style="font-size: 20px;">
+            Our method jointly learns the scene representation via Gaussian Splatting and recovers the camera motion through Bézier SE(3) formulation effectively, minimizing discrepancies between synthesized and real-world measurements of both blurry image and corresponding event stream. We evaluate our approach on both synthetic and real datasets, showcasing its ability to render view-consistent, sharp images from the learned radiance field and the estimated camera trajectory. 
+         
+            To the best of our knowledge, ours is the first work to address this highly challenging ill-posed problem in a Gaussian Splatting framework with the effective incorporation of temporal information captured using the event stream.
+            </p>
+          <p style="font-size: 20px;">
+            <i>Keywords: Gaussian Splatting, Event Stream, Pose Estimation, Deblurring, Novel View Synthesis, 3D from a Single Image</i>
+          </p>
+        </div>
+      </div>
+    </div>
+    
+          <div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3" style="color: black;">Pipeline</h2>
+    <!-- Display the GIF -->
+    <img src=".\static\videos\pipeline.gif"
+         alt="Pipeline Overview" 
+         style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+
+         
+  </div>
+
+
+
+  
+
+
+</div>
+
+
+
+          
+          
+
+
+        
+    </div>
+   
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="color: black;">Results</h2>
+        <div class="content has-text-justified", style="font-size: 20px;">
+          <p style="color: black;">
+            The qualitative evaluation results are presented, showcasing performance on both synthetic and real datasets, respectively. The experimental results demonstrate that our method performs on par with BeNeRF while providing significant advantages in accelerated training times, real-time rendering capabilities, and reduced GPU memory usage. Specifically, it highlights that prior learning-based methods struggle to generalize, whereas our method maintains reconstruction quality. Furthermore, our approach achieves competitive results on real noisy datasets.
+            </br>
+            <div class="blinking-text">
+              <center>Hover over or click the image to view the outputs of our method!</center>
+            </div>
+            </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-size-5" style="color: black;">Real-World Dataset Results</h2>
+    <div class="media-wrapper">
+      <div class="media-container">
+        <!-- Image that is displayed initially -->
+        <img src=".\static\images\camera.jpg" alt="Image" class="hover-image">
+        <!-- GIF that is hidden initially and played on hover -->
+        <img src=".\static\videos\camera.gif" alt="GIF" class="hover-gif">
+      </div>
+    
+      <div class="media-container">
+        <img src=".\static\images\lego.jpg" alt="Image" class="hover-image">
+        <img src=".\static\videos\lego.gif" alt="GIF" class="hover-gif">
+      </div>
+    
+      <div class="media-container">
+        <img src=".\static\images\letter.jpg" alt="Image" class="hover-image">
+        <img src=".\static\videos\letter.gif" alt="GIF" class="hover-gif">
+      </div>
+    
+      <div class="media-container">
+        <img src=".\static\images\plant.jpg" alt="Image" class="hover-image">
+        <img src=".\static\videos\plant.gif" alt="GIF" class="hover-gif">
+      </div>
+    
+      <div class="media-container">
+        <img src=".\static\images\toys.jpg" alt="Image" class="hover-image">
+        <img src=".\static\videos\toys.gif" alt="GIF" class="hover-gif">
+      </div>
+    </div>
+
+    <br/>
+    <br/>
+    <h2 class="title is-size-5" style="color: black;">Synthetic Dataset Results</h2>
+    <div class="media-wrapper">
+      <div class="media-container">
+        <img src=".\static\images\livingroom.png" alt="Image" class="hover-image">
+        <img src=".\static\videos\livingroom.gif" alt="GIF" class="hover-gif">
+      </div>
+    
+      <div class="media-container">
+        <img src=".\static\images\pinkcastle.png" alt="Image" class="hover-image">
+        <img src=".\static\videos\pinkcastle.gif" alt="GIF" class="hover-gif">
+      </div>
+    
+      <div class="media-container">
+        <img src=".\static\images\whiteroom.png" alt="Image" class="hover-image">
+        <img src=".\static\videos\whiteroom.gif" alt="GIF" class="hover-gif">
+      </div>
+    
+      <div class="media-container">
+        <img src=".\static\images\outdoorpool.png" alt="Image" class="hover-image">
+        <img src=".\static\videos\outdoorpool.gif" alt="GIF" class="hover-gif">
+      </div>
+    
+      <div class="media-container">
+        <img src=".\static\images\tanabata.png" alt="Image" class="hover-image">
+        <img src=".\static\videos\tanabata.gif" alt="GIF" class="hover-gif">
+      </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+      
+
+
+
+    
+<br>
+<div class="container is-max-desktop">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+
+    <h2 class="title is-3" style="color: black;"><center>Comparison</center></h2>
+
+    <div class="content has-text-justified", style="font-size: 20px;">
+     <p style="color: black;"> To assess the effectiveness of our method in terms of image deblurring, we compare it with state-of-the-art deep learning-based single-image deblurring techniques, including DeblurGANv2, MPRNet, NAFNet, Restormer, event-enhanced single-image deblurring method EDI, and BeNeRF.</p>
+    </div>
+  
+
+    <h2 class="title is-size-5" style="color: black;">Real World Dataset </h2>
+  
+        <div class="container_comop">
+            <img src=".\static\images\realdata_comaparisons.png" alt="comparison_1" height="1000px" width="1000px">
+            </br>  </br></br>
+            <h2 class="title is-size-5" style="color: black;">Synthetic Dataset </h2>
+            <img src=".\static\images\syntheticdata_comparisons.png" alt="comparison_2" height="1000px" width="1000px">
+        </div>
+
+
+</div>
+</div>
+</div>
+
+
+  </div>
+</section>
+
+
+<section class="teaser" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{matta2024besplatgaussiansplatting,
+      title={BeSplat: Gaussian Splatting from a Single Blurry Image and Event Stream}, 
+      author={Gopi Raju Matta and Reddypalli Trisha and Kaushik Mitra},
+      year={2024},
+      eprint={2412.19370},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2412.19370}, 
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+  
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+         
+         
+            <p>
+              Source code for this website is adapted from <a href="https://github.com/LingzheZhao/LingzheZhao.github.io/tree/main/BAD-Gaussians">Bad Gaussians</a>, 
+              licensed under a 
+              <a href="https://creativecommons.org/licenses/by-sa/4.0">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

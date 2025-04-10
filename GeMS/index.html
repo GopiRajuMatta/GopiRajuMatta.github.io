@@ -280,7 +280,7 @@ h2.title {
             Our approach integrates VGGSfM, a deep learning-based SfM pipeline, to estimate camera poses and generate point clouds, along with MCMC-based Gaussian Splatting, which ensures robust scene initialization without heuristic densification. Additionally, joint optimization of camera motion and Gaussian parameters enhances stability and accuracy.
           </p>
           <p>
-            To further improve reconstruction, GeMS-E, an event-based extension of GeMS, incorporates Event-based Double Integral (EDI) deblurring, which first restores sharp images from blurred inputs. These refined images are then fed into the GeMS pipeline, leading to improved camera pose estimation, higher quality point clouds, and overall enhanced reconstruction accuracy. GeMS-E is particularly useful when event data is available, enabling sharper and more reliable results even under extreme motion blur conditions. To
+            To further improve reconstruction, particularly in cases where all input views are severely blurred, GeMS-E: an event-based extension of GeMS, incorporates Event-based Double Integral (EDI) deblurring, which first restores sharp images from blurred inputs. These refined images are then fed into the GeMS pipeline, leading to improved camera pose estimation, higher quality point clouds, and overall enhanced reconstruction accuracy. GeMS-E is particularly useful when event data is available, enabling sharper and more reliable results even under extreme motion blur conditions. To
 further support research in this area, we provide a complementary synthetic event dataset specifically curated for extreme blur scenarios.
           </p>
         </div>

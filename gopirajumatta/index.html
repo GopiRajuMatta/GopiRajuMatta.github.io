@@ -1,0 +1,444 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Gopi Raju Matta</title>
+
+    <meta name="author" content="Gopi Raju Matta">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Professional Color Scheme */
+    .glass-navbar {
+      background-color: #343a40; /* Dark grayish background for a sleek, professional look */
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    }
+  
+    .navbar {
+      width: 100%;
+      max-width: 1200px; /* Matches content width */
+      margin: 0 auto; /* Centers the navbar */
+    }
+  
+    .navbar-nav {
+      gap: 25px;
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase; /* Makes the text appear formal */
+      letter-spacing: 1px; /* Adds space between the letters */
+      display: flex; /* Ensure navbar items are inline in larger viewports */
+    }
+  
+    .nav-link {
+      color: #ffffff !important; /* White text for contrast */
+      transition: all 0.3s ease;
+      padding: 8px 15px;
+      border-radius: 4px;
+    }
+  
+    /* Hover Effect - Light Transparent Goldish color */
+    .nav-link:hover {
+      background-color: rgba(255, 215, 0, 0.7); /* Light transparent goldish color */
+      color: white !important;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(255, 215, 0, 0.5); /* Goldish shadow */
+    }
+  
+    /* Navbar toggler (hamburger icon) styling */
+    .navbar-toggler {
+      border: none;
+      color: white;
+    }
+  
+    .navbar-toggler i {
+      color: white;
+    }
+  
+    /* Smooth scrolling effect */
+    html {
+      scroll-behavior: smooth;
+    }
+  
+    /* Adding space between nav items */
+    .nav-item {
+      position: relative;
+    }
+  
+    .nav-item + .nav-item {
+      margin-left: 15px;
+    }
+  
+    /* Mobile View Adjustments */
+    @media (max-width: 991px) {
+      .navbar-nav {
+        gap: 15px;
+        font-size: 14px; /* Slightly smaller text for mobile */
+        display: block; /* Make navbar items stack vertically */
+        text-align: center;
+        margin-top: 10px;
+      }
+  
+      .nav-link {
+        padding: 10px 20px; /* Larger touch area */
+      }
+  
+      /* When the hamburger icon is clicked */
+      .navbar-collapse {
+        display: none; /* Hide items initially */
+      }
+  
+      .navbar-collapse.collapse {
+        display: block; /* Show items when the menu is toggled */
+      }
+  
+      .nav-item + .nav-item {
+        margin-left: 0;
+      }
+  
+      /* Adjust the width of the navbar for mobile */
+      .navbar {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+  
+      /* Ensure navbar spans the full width */
+      .navbar-collapse {
+        width: 100%;
+      }
+  
+      .nav-item {
+        margin: 10px 0; /* Add vertical spacing between items */
+      }
+    }
+  </style>
+  
+  <body>
+    <div>
+      <nav class="navbar navbar-expand-lg sticky-top glass-navbar">
+        <div class="container-fluid p-0">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About Me</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#pubs">Publications</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#service">Academic Service</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#talks">Recorded Talks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#teaching">Teaching</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr style="padding:0px">
+              <td style="padding:2.5%;width:63%;vertical-align:middle">
+                <p class="name" style="text-align: center;" id="about">
+                  Gopi Raju Matta<br><br>
+                </p>I am a Ph.D. scholar in the Computational Imaging Lab, Department of Electrical Engineering at IIT Madras, working under the supervision of <a href="https://www.ee.iitm.ac.in/kmitra/">Prof. Kaushik Mitra</a>. I received my B.Tech. in Electronics and Communication Engineering from RGUKT IIIT Nuzvid in 2015, and my M.Tech. from IIEST Shibpur in 2017.
+                <p>
+                </p>
+                My research lies at the intersection of computer vision, computational imaging, and computer graphics, with a focus on Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS). I work on radiance field reconstruction and novel view synthesis under challenging conditions, such as lens flare and motion blur caused by camera shake, where I employ both traditional and event cameras, with the event camera proving particularly effective in accurately tracking camera motion from blurred frames.
+                <p>
+                 
+                  </p>
+                <p style="text-align:center">
+                  <a href="mailto:ee17d021@smail.iitm.ac.in">Email</a> &nbsp;/&nbsp;
+                  <a href="data/GopiRajuMatta.pdf">CV</a> &nbsp;/&nbsp;
+                  <a href="data/GopiRajuMatta-Bio.txt">Bio</a> &nbsp;/&nbsp;
+                  <a href="https://scholar.google.com/citations?view_op=search_authors&mauthors=gopi+raju+matta&hl=en&oi=ao">Scholar</a> &nbsp;/&nbsp;
+                  <a href="https://github.com/GopiRajuMatta">Github</a> &nbsp;/&nbsp;
+                  <a href="https://www.linkedin.com/in/gopi-raju-matta-1b5347105">LinkedIn</a>
+                </p>
+              </td>
+              <td style="padding:2.5%;width:37%;max-width:37%">
+                <a href="images/GopiRajuMatta.jpg"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/GopiRajuMatta.jpg" class="hoverZoomLink"></a>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+              <tr>
+              <td style="padding:16px;width:100%;vertical-align:middle">
+                <h2></h2>
+                <p>
+                  
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+
+    
+    
+      <tr>
+      <td style="padding:16px;width:100%;vertical-align:middle">
+        <h2 id="pubs">Publications</h2>
+        
+      </td>
+    </tr>
+  
+  <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+    <tr onmouseout="cat4d_stop()" onmouseover="cat4d_start()" bgcolor="#ffffd0">
+      <td style="padding:16px;width:20%;vertical-align:middle">
+        <div class="one" style="position:relative; width:160px; height:160px;">
+          <div class="two" id="GN-FR" style="position:absolute; top:0; left:0; width:160px; height:160px; opacity:0; transition: opacity 0.3s;">
+            <video width="240" height="160" muted autoplay loop>
+              <source src="images/flare_teaser.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <img src="images/flare_removal.png" width="240" height="160">
+        </div>
+    
+        <script type="text/javascript">
+          function cat4d_start() {
+            document.getElementById('GN-FR').style.opacity = "1";
+          }
+    
+          function cat4d_stop() {
+            document.getElementById('GN-FR').style.opacity = "0";
+          }
+          cat4d_stop();
+        </script>
+      </td>
+      <td style="padding:8px;width:80%;vertical-align:middle">
+        <a href="https://bmvc2024.org/proceedings/659/">
+          <span class="papertitle"  style="margin-left: 100px;">GN-FR: Generalizable Neural Radiance Fields for Flare Removal</span>
+        </a>
+        <br>
+        <a href="https://www.cs.columbia.edu/~rundi/" style="margin-left: 100px;">Gopi Raju Matta</a>,
+        <a href="https://ruiqigao.github.io/">Rahul Siddartha</a>,
+        <a href="https://poolio.github.io/">Rongali Simhachala Venkata Girish</a>,<br>
+        <a href="https://alextrevithick.github.io/" style="margin-left: 100px;">Sumit Sharma</a>,
+        <a href="https://holynski.org/">Kaushik Mitra</a>
+        <br>
+        <em style="margin-left: 100px;">BMVC</em>, 2024 &nbsp
+        <br>
+        <a href="https://bmvc2024.org/proceedings/659/" style="margin-left: 100px;">project page</a>
+        /
+        <a href="https://arxiv.org/abs/2412.08200">arXiv</a>
+        <p></p>
+        <p style="margin-left: 100px;">
+          Multi-view flare removal using generalizable NeRFs with unsupervised flare-occupancy masking and view-guided sampling.
+        </p>
+      </td>
+    </tr>
+    
+
+
+    <tr onmouseout="r2r_stop()" onmouseover="r2r_start()" style="background-color: rgba(255, 192, 203, 0.3); backdrop-filter: blur(8px);">
+      <td style="padding:16px;width:20%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='BeSplat'><video   width="240" height="160" muted autoplay loop>
+          <source src="images/tanabata.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
+          <img src='images/tanabata.png'  width="240" height="160">
+        </div>
+        <script type="text/javascript">
+          function r2r_start() {
+            document.getElementById('BeSplat').style.opacity = "1";
+          }
+
+          function r2r_stop() {
+            document.getElementById('BeSplat').style.opacity = "0";
+          }
+          r2r_stop()
+        </script>
+      </td>
+      <td style="padding:8px;width:80%;vertical-align:middle">
+        <a href="https://gopirajumatta.github.io/BeSplat/">
+          <span class="papertitle" style="margin-left: 100px;">Gaussian Splatting from a Single Blurry Image and Event Stream</span>
+        </a>
+        <br>
+        <a href="https://hadizayer.github.io/" style="margin-left: 100px;">Gopi Raju Matta</a>,
+        <a href="https://henzler.github.io/">Reddypalli Trisha</a>, 
+        <a href="https://jbhuang0604.github.io/">Kaushik Mitra </a>
+        
+        <br>
+        <em style="margin-left: 100px;">WACV Workshop</em>, 2025 &nbsp 
+        <br>
+        <a href="https://gopirajumatta.github.io/BeSplat/" style="margin-left: 100px;">project page</a>
+        /
+        <a href="https://arxiv.org/abs/2412.19370">arXiv</a>
+        <p></p>
+        <p style="margin-left: 100px;">
+          Sharp 3D scene reconstruction using a single motion-blurred image and event stream via 3D
+          Gaussian Splatting.
+        </p>
+      </td>
+    </tr>
+
+
+    <tr onmouseout="simvs_stop()" onmouseover="simvs_start()" style="
+    background: rgba(144, 238, 144, 0.15);  /* Much lighter green with more transparency */
+    backdrop-filter: blur(10px);           /* Glassmorphism effect */
+    -webkit-backdrop-filter: blur(10px);   /* For Safari */
+    padding: 16px;
+    border-radius: 12px;
+  ">
+      <td style="padding:16px;width:20%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='GEMS'><video  width="240" height="160" muted autoplay loop>
+          <source src="images/GeMS_combined_websafe.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
+          <img src='images/combined_image.jpg' width="235" height="160">
+        </div>
+        <script type="text/javascript">
+          function simvs_start() {
+            document.getElementById('GEMS').style.opacity = "1";
+          }
+
+          function simvs_stop() {
+            document.getElementById('GEMS').style.opacity = "0";
+          }
+          simvs_stop()
+        </script>
+      </td>
+      <td style="padding:8px;width:80%;vertical-align:middle">
+        <a href="https://gopirajumatta.github.io/GeMS/">
+          <span class="papertitle" style="margin-left: 100px;">GeMS: Efficient Gaussian Splatting for Extreme Motion-Blurred
+            Images</span>
+        </a>
+        <br>
+        <a href="https://alextrevithick.github.io/" style="margin-left: 100px;">Gopi Raju Matta</a>,
+        <a href="https://scholar.google.com/citations?user=-KSDNZQAAAAJ&hl=en">Trisha Reddypalli</a>,
+        <a href="https://henzler.github.io/">Divya Madhuri Vemunuri</a>,
+        <a href="https://dorverbin.github.io/">Kaushik Mitra</a>
+        
+        <br>
+        <em style="margin-left: 100px;">Under review</em>
+        <br>
+        <a href="https://gopirajumatta.github.io/GeMS/" style="margin-left: 100px;">project page</a>
+        /
+        <a href="https://www.techrxiv.org/doi/full/10.36227/techrxiv.174362573.31249887/v1">arXiv</a>
+        <p></p>
+        <p style="margin-left: 100px;">
+          Full pipeline for 3D reconstruction under extreme motion blur without requiring sharp images.
+        </p>
+      </td>
+    </tr>
+
+
+    
+			
+
+          </tbody></table>
+
+          
+					<table style="width:100%; margin:0 auto; border:0; border-spacing:0; padding:16px;"><tbody>
+            <tr>
+              <td>
+                <h2>Miscellanea</h2>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            
+           
+            
+
+            <tr>
+              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
+                <div class="card" style="background-color: #F1D1D1; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                  <h2 style="text-align:center;" id="service">Academic Service</h2>
+                </div>
+              </td>
+              <td style="padding:8px;width:80%;vertical-align:center">
+                <div class="card-content" style="padding: 20px; background-color: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                  Reviewer for ICVGIP-23, ICVGIP-24
+                </div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
+                <div class="card" style="background-color: #D1E6F1; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                  <h2 style="text-align:center;" id="talks">Recorded Talks</h2>
+                </div>
+              </td>
+              <td style="padding:8px;width:80%;vertical-align:center">
+                <div class="card-content" style="padding: 20px; background-color: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                  <a href="https://youtu.be/Riu7S8ZrRgE" style="color: #1D65A6; text-decoration: none;">EE Research Scholars Symposium, 2025</a><br>
+                  <a href="https://www.youtube.com/watch?v=4tDhYsFuEqo" style="color: #1D65A6; text-decoration: none;">HDR Tone Mapping Lecture, 2024</a>
+                </div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td align="center" style="padding:16px;width:20%;vertical-align:middle">
+                <div class="card" style="background-color: #F1F2D1; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                  <h2 style="text-align:center;" id="teaching">Teaching</h2>
+                </div>
+              </td>
+              <td style="padding:8px;width:80%;vertical-align:center">
+                <div class="card-content" style="padding: 20px; background-color: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                  Faculty at Learning Room for CBSE X, XI Maths (2023–)<br>
+                  Teaching Assistant for Computational Photography course, IIT Madras (Jan–May, 2022)<br>
+                  Teaching Assistant for Probability Foundations, IIT Madras (July–Dec, 2021)<br>
+                  Teaching Assistant for Computational Photography course, IIT Madras (Jan–May, 2021)<br>
+                  Teaching Assistant for Modern Computer Vision, IIT Madras (July–Dec, 2020)<br>
+                  Teaching Assistant for Signals and Systems, IIT Madras (Jan–May, 2019)<br>
+                  Teaching Assistant for Data Analytics Lab, IIT Madras (July–Dec, 2018 & 2019)<br>
+                  Teaching Assistant for Digital Signal Processing,
+            
+            
+           
+           
+            
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+              <td style="padding:0px">
+                <br>
+                <p style="text-align:right;font-size:small;">
+                  Design and source code borrowed from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron.</a>
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </table>
+
+    </div>
+  </body>
+</html>

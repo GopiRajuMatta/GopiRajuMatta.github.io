@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="description"
         content="PRISM3D: Probabilistic Refinement and Robust Initialization for Physically Consistent Scene Modeling under Extreme Motion Blur">
-  <meta name="keywords" content="Gaussian Splatting, Deblurring, Image Restoration, Event Cameras">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PRISM3D</title>
 
@@ -34,12 +33,32 @@
       font-weight: 700;
     }
 
+    /* Why PRISM3D feature cards */
+    .feature-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 25px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #eaeaea;
+      height: 100%;
+      transition: transform 0.2s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .feature-icon {
+      font-size: 2.5em;
+      color: #7f00ff;
+      margin-bottom: 15px;
+    }
+
     /* Container to hold the media items in a row */
     .media-wrapper {
       display: flex;
-      justify-content: space-between; /* Spread items evenly across row */
+      justify-content: space-between; 
       gap: 10px; 
-      flex-wrap: nowrap; /* FORCE exactly one row */
+      flex-wrap: nowrap; 
       margin-bottom: 20px;
       width: 100%;
     }
@@ -47,8 +66,8 @@
     /* Styling for individual media containers */
     .media-container {
       position: relative;
-      width: 19%; /* Allows exactly 5 items to fit perfectly */
-      aspect-ratio: 200 / 135; /* Maintains perfect box proportions automatically */
+      width: 19%; 
+      aspect-ratio: 200 / 135; 
       overflow: hidden;
       border-radius: 6px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -90,7 +109,6 @@
        font-weight: 600;
     }
 
-    /* Elegant callout box instead of blinking red text */
     .hover-callout {
       background-color: #f0f4f8;
       color: #2c3e50;
@@ -103,22 +121,10 @@
       border: 1px solid #dce4ec;
     }
 
-    /* Responsive labels for videos */
-    .video-labels {
-      display: flex;
-      justify-content: space-between;
-      max-width: 1000px;
-      margin: 0 auto 10px auto;
-      font-size: 18px;
-      font-weight: 600;
-      color: #333;
-      padding: 0 10%;
-    }
-
     /* Responsive full-width images */
     .comparison-img, .pipeline-img {
       width: 100%;
-      max-width: 1000px;
+      max-width: 1100px;
       height: auto;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -126,20 +132,64 @@
       display: block;
     }
 
-    /* Clean spacing for videos */
-    .video-container {
-      max-width: 1000px;
-      margin: 0 auto 20px auto;
+    /* --- NEW CSS FOR VERTICAL SCENE LABELS & VIDEOS --- */
+    .scene-wrapper {
+      display: flex;
+      align-items: stretch;
+      max-width: 850px;
+      margin: 0 auto 30px auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: #000;
     }
-    
-    video {
+
+    .scene-label-vertical {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      background: #f0f4f8;
+      color: #333;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 4px solid #7f00ff;
+      min-width: 50px;
+    }
+
+    .scene-video-wrapper {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      background: #000;
+    }
+
+    .scene-video-wrapper video {
       width: 100%;
       height: auto;
       display: block;
     }
+    
+    /* Top header layout for the videos (adjusted to align with offset) */
+    .video-headers-aligned {
+      display: flex; 
+      justify-content: space-between; 
+      max-width: 850px; 
+      margin: 0 auto 10px auto; 
+      font-size: 18px; 
+      font-weight: 600; 
+      color: #333; 
+      padding-left: 50px; /* Matches the width of the vertical label */
+    }
+    .video-headers-aligned span {
+      flex: 1;
+      text-align: center;
+    }
+    /* --------------------------------------------------- */
+
   </style>
 </head>
 <body>
@@ -150,29 +200,40 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title" style="line-height: 1.4;">
-  <span class="prism-gradient">PRISM3D</span>: Probabilistic Refinement and Robust Initialization<br>
-  <span style="font-size: 0.85em; display: inline-block; margin-top: 8px; color: #333;">for Physically Consistent Scene Modeling</span><br>
-  <span style="font-size: 0.85em; color: #666;">under Extreme Motion Blur</span>
-</h1>
+            <span class="prism-gradient">PRISM3D</span>: Probabilistic Refinement and Robust Initialization<br>
+            <span style="font-size: 0.85em; display: inline-block; margin-top: 8px; color: #333;">for Physically Consistent Scene Modeling</span><br>
+            <span style="font-size: 0.85em; color: #666;">under Extreme Motion Blur</span>
+          </h1>
 
           <h1 class="title is-4 publication-title" style="color: #555;">ECCV 2026</h1>
+          
           <div class="is-size-5 publication-authors">
             <span class="author-block" style="margin-right: 15px;">
-              <a href="https://www.linkedin.com/in/gopi-raju-matta-1b5347105">Gopi Raju Matta</a>
+              <a href="https://www.linkedin.com/in/gopi-raju-matta-1b5347105">Gopi Raju Matta</a><sup>1</sup>
             </span>
             <span class="author-block" style="margin-right: 15px;">
-              <a href="https://www.linkedin.com/in/reddypalli-trisha">Trisha Reddypalli</a>
+              <a href="https://www.linkedin.com/in/reddypalli-trisha">Trisha Reddypalli</a><sup>1</sup>
             </span>
             <span class="author-block" style="margin-right: 15px;">
-              <a href="https://www.linkedin.com/in/divya-madhuri-4641b7132">Divya Madhuri Vemunuri</a>
+              <a href="https://www.linkedin.com/in/divya-madhuri-4641b7132">Divya Madhuri Vemunuri</a><sup>1</sup>
             </span>
             <span class="author-block">
-              <a href="https://www.ee.iitm.ac.in/kmitra">Kaushik Mitra</a>
+              <a href="https://www.ee.iitm.ac.in/kmitra">Kaushik Mitra</a><sup>1</sup>
             </span>
           </div>
 
-          <div class="column has-text-centered" style="margin-top: 20px;">
+          <div class="is-size-5 publication-authors" style="margin-top: 10px; margin-bottom: 20px;">
+            <span class="author-block"><sup>1</sup>Indian Institute of Technology Madras</span>
+          </div>
+
+          <div class="column has-text-centered">
             <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (PDF)</span>
+                </a>
+              </span>
               <span class="link-block">
                 <a href="" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
@@ -196,21 +257,52 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body has-text-centered">
-      <div class="video-labels">
+      <div class="video-headers-aligned" style="max-width: 800px; padding-left: 0;">
         <span>Input</span>
         <span>PRISM3D</span>
         <span>PRISM3D-E</span>
       </div>
       
-      <div class="video-container">
-        <video id="bad-gaussians-decoration-fullres" autoplay muted loop playsinline>
-          <source src="./static/videos/camellia.mp4" type="video/mp4">
-        </video>
+      <div class="scene-wrapper" style="max-width: 800px; box-shadow: none; margin-bottom: 0;">
+        <div class="scene-video-wrapper" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <video id="bad-gaussians-decoration-fullres" autoplay muted loop playsinline>
+            <source src="./static/videos/camellia.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
 
-      <h2 class="subtitle" style="font-size: 16px; color: #4a4a4a; margin-top: 15px; line-height: 1.5; padding: 0 20px;">
+      <h2 class="subtitle" style="max-width: 800px; margin: 15px auto 0 auto; font-size: 16px; color: #4a4a4a; line-height: 1.5; padding: 0 20px;">
         PRISM3D framework learns a sharp 3D Gaussian representation of the scene along with its camera motion trajectories directly from extreme motion-blurred images, enabling state-of-the-art deblurring, high-quality novel view synthesis, and real-time rendering, all with efficient training time and minimal memory overhead.
       </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: #fafbfc; padding-top: 3rem; padding-bottom: 3rem; margin-top: 2rem;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Why PRISM3D?</h2>
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <div class="feature-card has-text-centered">
+          <div class="feature-icon"><i class="fas fa-image"></i></div>
+          <h3 class="title is-5">Directly Handles Blur</h3>
+          <p style="font-size: 15px; color: #555;">Unlike previous approaches, PRISM3D reconstructs scenes without requiring sharp reference images.</p>
+        </div>
+      </div>
+      <div class="column is-one-third">
+        <div class="feature-card has-text-centered">
+          <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+          <h3 class="title is-5">Robust Initialization</h3>
+          <p style="font-size: 15px; color: #555;">VGGSfM and MCMC-based Gaussian initialization enable stable optimization under extreme blur.</p>
+        </div>
+      </div>
+      <div class="column is-one-third">
+        <div class="feature-card has-text-centered">
+          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+          <h3 class="title is-5">Event-Based Extension</h3>
+          <p style="font-size: 15px; color: #555;">PRISM3D-E leverages event cameras for improved reconstruction when event streams are available.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -224,13 +316,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified" style="font-size: 16px; color: #333;">
           <p>
-            PRISM3D is a 3D Gaussian Splatting framework designed to handle extreme motion blur in scene reconstruction. Unlike traditional methods that require sharp images for pose estimation and point cloud generation, PRISM3D directly processes blurred images, making it more practical for real-world scenarios.
+            We address the inverse problem of <strong>blind 3D scene reconstruction from extremely motion-blurred images</strong>, a scenario where traditional Structure-from-Motion pipelines fail. Unlike traditional methods that require sharp images for pose estimation, <strong>PRISM3D</strong> directly processes blurred images, making it practical for real-world scenarios.
           </p>
           <p>
-            Our approach integrates VGGSfM, a deep learning-based SfM pipeline, to estimate camera poses and generate point clouds, along with MCMC-based Gaussian Splatting, which ensures robust scene initialization without heuristic densification. Additionally, joint optimization of camera motion and Gaussian parameters enhances stability and accuracy.
+            Our approach utilizes a <strong>Robust Initialization strategy</strong> via deep dense tracking (VGGSfM) to recover global topology where feature matching fails. To robustly populate these sparse priors, we adopt a probabilistic formulation for geometric densification via <strong>Markov Chain Monte Carlo (MCMC)</strong>, while simultaneously modeling physical image formation via continuous Bézier Trajectories.
           </p>
           <p>
-            To further improve reconstruction, particularly in cases where all input views are severely blurred, PRISM3D-E: an event-based extension of PRISM3D, incorporates Event-based Double Integral (EDI) deblurring, which first restores sharp images from blurred inputs. These refined images are then fed into the PRISM3D pipeline, leading to improved camera pose estimation, higher quality point clouds, and overall enhanced reconstruction accuracy. PRISM3D-E is particularly useful when event data is available, enabling sharper and more reliable results even under extreme motion blur conditions. To further support research in this area, we provide a complementary synthetic event dataset specifically curated for extreme blur scenarios.
+            Furthermore, we introduce <strong>PRISM3D-E</strong>, a multi-modal (RGB + Events) extension that seamlessly integrates high-temporal-resolution events (EDI deblurring) as structural priors to maximize geometric recovery. To facilitate future research, we concurrently contribute the <strong>PRISM3D-E Benchmark dataset</strong> specifically curated for extreme blur scenarios.
           </p>
         </div>
       </div>
@@ -242,19 +334,11 @@
 
 <section class="section" style="padding-top: 0;">
   <div class="container is-max-desktop has-text-centered">
-    <h2 class="title is-3">Keywords</h2>
-    <p style="font-size: 16px; color: #555;">
-      Gaussian Splatting, Deblurring, Image Restoration, Event Cameras.
+    <h2 class="title is-3">PRISM3D Pipeline</h2><br>
+    <img src="./static/images/pipeline.png" class="pipeline-img" alt="PRISM3D Pipeline Overview"> 
+    <p style="text-align: center; max-width: 900px; margin: 0 auto; color: #555; font-size: 16px;">
+      <strong>Overview of PRISM3D and PRISM3D-E.</strong> Our framework jointly estimates camera motion and a sharp Gaussian representation directly from severely motion-blurred images, utilizing deep SfM for robust initialization and MCMC for probabilistic geometric refinement.
     </p>
-  </div>
-</section>
-
-<br>
-
-<section class="section" style="padding-top: 0;">
-  <div class="container is-max-desktop has-text-centered">
-    <h2 class="title is-3">Pipeline</h2><br>
-    <img src="./static/images/pipeline.png" class="pipeline-img" alt="overview"> 
   </div>
 </section>
 
@@ -263,7 +347,7 @@
 <div class="container">
   <div class="columns is-centered has-text-centered">
     <div class="column is-four-fifths">
-      <h2 class="title is-3">Results</h2><br>
+      <h2 class="title is-3">PRISM3D Qualitative Results</h2><br>
       <div class="content has-text-justified">
         <p class="content has-text-justified" style="font-size: 16px; color: #333; text-align: center; margin-top: -10px;">
           PRISM3D and its event-based extension PRISM3D-E achieve high-quality 3D reconstructions and sharp novel view synthesis under extreme motion blur. Our results on both synthetic and real-world datasets demonstrate state-of-the-art performance in challenging blur scenarios.
@@ -272,43 +356,62 @@
     </div>
   </div>
   
-  <center><h1 style="font-size: 30px; color: black; margin-bottom: 20px;"> Real-World Dataset Results</h1></center>
+  <h2 class="title is-4 has-text-centered" style="margin-top: 20px; margin-bottom: 20px;">Real-World Dataset Results</h2>
         
-  <div class="video-labels">
+  <div class="video-headers-aligned">
     <span>Input</span>
     <span>PRISM3D</span>
     <span>PRISM3D-E</span>
   </div>
   
-  <div class="video-container">
-    <video id="bad-gaussians-wine" autoplay muted loop playsinline>
-      <source src="./static/videos/camera.mp4" type="video/mp4">
-    </video>
+  <div class="scene-wrapper">
+    <div class="scene-label-vertical">Camera</div>
+    <div class="scene-video-wrapper">
+      <video id="bad-gaussians-wine" autoplay muted loop playsinline>
+        <source src="./static/videos/camera.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
-  <div class="video-container">
-    <video id="bad-gaussians-pool" autoplay muted loop playsinline>
-      <source src="./static/videos/lego.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="video-container">
-    <video id="bad-gaussians-basket-fullres" autoplay muted loop playsinline>
-      <source src="./static/videos/letter.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="video-container">
-    <video id="bad-gaussians-heron-fullres" autoplay muted loop playsinline>
-      <source src="./static/videos/plant.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="video-container">
-    <video id="bad-gaussians-puppet-fullres" autoplay muted loop playsinline>
-      <source src="./static/videos/toys.mp4" type="video/mp4">
-    </video>
-  </div> 
 
-  <br/><br/>
+  <div class="scene-wrapper">
+    <div class="scene-label-vertical">Lego</div>
+    <div class="scene-video-wrapper">
+      <video id="bad-gaussians-pool" autoplay muted loop playsinline>
+        <source src="./static/videos/lego.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
 
-  <center><h1 style="font-size: 30px; color: black; margin-bottom: 20px;"> Synthetic Dataset Results</h1></center>
+  <div class="scene-wrapper">
+    <div class="scene-label-vertical">Letter</div>
+    <div class="scene-video-wrapper">
+      <video id="bad-gaussians-basket-fullres" autoplay muted loop playsinline>
+        <source src="./static/videos/letter.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div class="scene-wrapper">
+    <div class="scene-label-vertical">Plant</div>
+    <div class="scene-video-wrapper">
+      <video id="bad-gaussians-heron-fullres" autoplay muted loop playsinline>
+        <source src="./static/videos/plant.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div class="scene-wrapper">
+    <div class="scene-label-vertical">Toys</div>
+    <div class="scene-video-wrapper">
+      <video id="bad-gaussians-puppet-fullres" autoplay muted loop playsinline>
+        <source src="./static/videos/toys.mp4" type="video/mp4">
+      </video>
+    </div> 
+  </div>
+
+  <br/><hr style="max-width: 300px; margin: 2rem auto;"><br/>
+
+  <h2 class="title is-4 has-text-centered">Synthetic Dataset Results</h2>
   <section class="section" style="padding-top: 0;">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -323,431 +426,225 @@
 
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-size-4" style="color: black;">PRISM3D</h2>
+          <h3 class="title is-5" style="color: #444; margin-bottom: 15px;">PRISM3D (Standalone)</h3>
           
           <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\000.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\bench\0.gif" alt="GIF" class="hover-gif">
+            <div class="media-container"><img src=".\static\images\selected\bench\000.png" class="hover-image"><img src=".\static\gifs\gems\bench\0.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\bench\004.png" class="hover-image"><img src=".\static\gifs\gems\bench\4.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\bench\006.png" class="hover-image"><img src=".\static\gifs\gems\bench\6.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\bench\010.png" class="hover-image"><img src=".\static\gifs\gems\bench\10.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\bench\028.png" class="hover-image"><img src=".\static\gifs\gems\bench\28.gif" class="hover-gif"></div>
+          </div>
+          
+          <div class="media-wrapper">
+            <div class="media-container"><img src=".\static\images\selected\camellia\000.png" class="hover-image"><img src=".\static\gifs\gems\camellia\0.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\004.png" class="hover-image"><img src=".\static\gifs\gems\camellia\4.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\014.png" class="hover-image"><img src=".\static\gifs\gems\camellia\14.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\019.png" class="hover-image"><img src=".\static\gifs\gems\camellia\19.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\028.png" class="hover-image"><img src=".\static\gifs\gems\camellia\28.gif" class="hover-gif"></div>
+          </div>
+          
+          <div id="extra-prism3d" style="display: none;">
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\dragon\001.png" class="hover-image"><img src=".\static\gifs\gems\dragon\1.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\dragon\003.png" class="hover-image"><img src=".\static\gifs\gems\dragon\3.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\dragon\006.png" class="hover-image"><img src=".\static\gifs\gems\dragon\6.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\dragon\009.png" class="hover-image"><img src=".\static\gifs\gems\dragon\9.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\dragon\015.png" class="hover-image"><img src=".\static\gifs\gems\dragon\15.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\004.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\bench\4.gif" alt="GIF" class="hover-gif">
+
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\jars\000.png" class="hover-image"><img src=".\static\gifs\gems\jars\0.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars\005.png" class="hover-image"><img src=".\static\gifs\gems\jars\5.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars\010.png" class="hover-image"><img src=".\static\gifs\gems\jars\10.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars\013.png" class="hover-image"><img src=".\static\gifs\gems\jars\13.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars\019.png" class="hover-image"><img src=".\static\gifs\gems\jars\19.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\006.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\bench\6.gif" alt="GIF" class="hover-gif">
+
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\jars2\001.png" class="hover-image"><img src=".\static\gifs\gems\jars2\1.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars2\002.png" class="hover-image"><img src=".\static\gifs\gems\jars2\2.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars2\004.png" class="hover-image"><img src=".\static\gifs\gems\jars2\4.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars2\015.png" class="hover-image"><img src=".\static\gifs\gems\jars2\15.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars2\016.png" class="hover-image"><img src=".\static\gifs\gems\jars2\16.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\010.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\bench\10.gif" alt="GIF" class="hover-gif">
+
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\postbox\004.png" class="hover-image"><img src=".\static\gifs\gems\postbox\4.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\postbox\011.png" class="hover-image"><img src=".\static\gifs\gems\postbox\11.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\postbox\013.png" class="hover-image"><img src=".\static\gifs\gems\postbox\13.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\postbox\014.png" class="hover-image"><img src=".\static\gifs\gems\postbox\14.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\postbox\018.png" class="hover-image"><img src=".\static\gifs\gems\postbox\18.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\028.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\bench\28.gif" alt="GIF" class="hover-gif">
+
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\001.png" class="hover-image"><img src=".\static\gifs\gems\stonelantern\1.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\006.png" class="hover-image"><img src=".\static\gifs\gems\stonelantern\6.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\007.png" class="hover-image"><img src=".\static\gifs\gems\stonelantern\7.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\012.png" class="hover-image"><img src=".\static\gifs\gems\stonelantern\12.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\019.png" class="hover-image"><img src=".\static\gifs\gems\stonelantern\19.gif" class="hover-gif"></div>
+            </div>
+
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\006.png" class="hover-image"><img src=".\static\gifs\gems\sunflowers\6.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\009.png" class="hover-image"><img src=".\static\gifs\gems\sunflowers\9.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\016.png" class="hover-image"><img src=".\static\gifs\gems\sunflowers\16.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\031.png" class="hover-image"><img src=".\static\gifs\gems\sunflowers\31.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\034.png" class="hover-image"><img src=".\static\gifs\gems\sunflowers\34.gif" class="hover-gif"></div>
             </div>
           </div>
-          <br/>
-
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\000.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\camellia\0.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\004.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\camellia\4.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\014.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\camellia\14.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\019.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\camellia\19.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\028.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\camellia\28.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
-
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\001.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\dragon\1.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\003.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\dragon\3.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\006.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\dragon\6.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\009.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\dragon\9.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\015.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\dragon\15.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
-
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\000.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars\0.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\005.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars\5.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\010.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars\10.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\013.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars\13.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\019.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars\19.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
-
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\001.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars2\1.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\002.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars2\2.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\004.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars2\4.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\015.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars2\15.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\016.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\jars2\16.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
-
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\004.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\postbox\4.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\011.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\postbox\11.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\013.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\postbox\13.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\014.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\postbox\14.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\018.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\postbox\18.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
-
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\001.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\stonelantern\1.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\006.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\stonelantern\6.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\007.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\stonelantern\7.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\012.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\stonelantern\12.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\019.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\stonelantern\19.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
-
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\006.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\sunflowers\6.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\009.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\sunflowers\9.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\016.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\sunflowers\16.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\031.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\sunflowers\31.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\034.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems\sunflowers\34.gif" alt="GIF" class="hover-gif">
-            </div>
+          
+          <div class="has-text-centered" style="margin-top: 20px;">
+            <button id="btn-prism3d" class="button is-dark is-outlined is-rounded">
+              <span class="icon"><i class="fas fa-chevron-down"></i></span>
+              <span>Show More PRISM3D Scenes</span>
+            </button>
           </div>
         </div>
       </div>
-      <br/><br/>
+
+      <br/><hr style="max-width: 300px; margin: 2rem auto;"><br/>
 
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-size-4" style="color: black;">PRISM3D-E</h2>
+          <h3 class="title is-5" style="color: #444; margin-bottom: 15px;">PRISM3D-E (Event-Assisted)</h3>
           
           <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\000.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\bench\0.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\004.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\bench\4.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\006.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\bench\6.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\010.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\bench\10.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\bench\028.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\bench\28.gif" alt="GIF" class="hover-gif">
-            </div>
+            <div class="media-container"><img src=".\static\images\selected\bench\000.png" class="hover-image"><img src=".\static\gifs\gems-e\bench\0.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\bench\004.png" class="hover-image"><img src=".\static\gifs\gems-e\bench\4.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\bench\006.png" class="hover-image"><img src=".\static\gifs\gems-e\bench\6.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\bench\010.png" class="hover-image"><img src=".\static\gifs\gems-e\bench\10.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\bench\028.png" class="hover-image"><img src=".\static\gifs\gems-e\bench\28.gif" class="hover-gif"></div>
           </div>
-          <br/>
-
+          
           <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\000.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\camellia\0.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\004.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\camellia\4.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\014.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\camellia\14.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\019.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\camellia\19.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\camellia\028.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\camellia\28.gif" alt="GIF" class="hover-gif">
-            </div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\000.png" class="hover-image"><img src=".\static\gifs\gems-e\camellia\0.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\004.png" class="hover-image"><img src=".\static\gifs\gems-e\camellia\4.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\014.png" class="hover-image"><img src=".\static\gifs\gems-e\camellia\14.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\019.png" class="hover-image"><img src=".\static\gifs\gems-e\camellia\19.gif" class="hover-gif"></div>
+            <div class="media-container"><img src=".\static\images\selected\camellia\028.png" class="hover-image"><img src=".\static\gifs\gems-e\camellia\28.gif" class="hover-gif"></div>
           </div>
-          <br/>
 
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\001.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\dragon\1.gif" alt="GIF" class="hover-gif">
+          <div id="extra-prisme" style="display: none;">
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\dragon\001.png" class="hover-image"><img src=".\static\gifs\gems-e\dragon\1.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\dragon\003.png" class="hover-image"><img src=".\static\gifs\gems-e\dragon\3.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\dragon\006.png" class="hover-image"><img src=".\static\gifs\gems-e\dragon\6.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\dragon\009.png" class="hover-image"><img src=".\static\gifs\gems-e\dragon\9.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\dragon\015.png" class="hover-image"><img src=".\static\gifs\gems-e\dragon\15.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\003.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\dragon\3.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\006.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\dragon\6.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\009.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\dragon\9.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\dragon\015.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\dragon\15.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
 
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\000.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars\0.gif" alt="GIF" class="hover-gif">
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\jars\000.png" class="hover-image"><img src=".\static\gifs\gems-e\jars\0.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars\005.png" class="hover-image"><img src=".\static\gifs\gems-e\jars\5.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars\010.png" class="hover-image"><img src=".\static\gifs\gems-e\jars\10.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars\013.png" class="hover-image"><img src=".\static\gifs\gems-e\jars\13.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars\019.png" class="hover-image"><img src=".\static\gifs\gems-e\jars\19.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\005.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars\5.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\010.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars\10.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\013.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars\13.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars\019.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars\19.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
 
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\001.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars2\1.gif" alt="GIF" class="hover-gif">
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\jars2\001.png" class="hover-image"><img src=".\static\gifs\gems-e\jars2\1.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars2\002.png" class="hover-image"><img src=".\static\gifs\gems-e\jars2\2.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars2\004.png" class="hover-image"><img src=".\static\gifs\gems-e\jars2\4.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars2\015.png" class="hover-image"><img src=".\static\gifs\gems-e\jars2\15.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\jars2\016.png" class="hover-image"><img src=".\static\gifs\gems-e\jars2\16.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\002.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars2\2.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\004.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars2\4.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\015.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars2\15.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\jars2\016.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\jars2\16.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
 
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\004.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\postbox\4.gif" alt="GIF" class="hover-gif">
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\postbox\004.png" class="hover-image"><img src=".\static\gifs\gems-e\postbox\4.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\postbox\011.png" class="hover-image"><img src=".\static\gifs\gems-e\postbox\11.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\postbox\013.png" class="hover-image"><img src=".\static\gifs\gems-e\postbox\13.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\postbox\014.png" class="hover-image"><img src=".\static\gifs\gems-e\postbox\14.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\postbox\018.png" class="hover-image"><img src=".\static\gifs\gems-e\postbox\18.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\011.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\postbox\11.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\013.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\postbox\13.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\014.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\postbox\14.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\postbox\018.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\postbox\18.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
 
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\001.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\stonelantern\1.gif" alt="GIF" class="hover-gif">
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\001.png" class="hover-image"><img src=".\static\gifs\gems-e\stonelantern\1.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\006.png" class="hover-image"><img src=".\static\gifs\gems-e\stonelantern\6.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\007.png" class="hover-image"><img src=".\static\gifs\gems-e\stonelantern\7.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\012.png" class="hover-image"><img src=".\static\gifs\gems-e\stonelantern\12.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\stonelantern\019.png" class="hover-image"><img src=".\static\gifs\gems-e\stonelantern\19.gif" class="hover-gif"></div>
             </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\006.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\stonelantern\6.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\007.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\stonelantern\7.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\012.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\stonelantern\12.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\stonelantern\019.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\stonelantern\19.gif" alt="GIF" class="hover-gif">
-            </div>
-          </div>
-          <br/>
 
-          <div class="media-wrapper">
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\006.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\sunflowers\6.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\009.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\sunflowers\9.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\016.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\sunflowers\16.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\031.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\sunflowers\31.gif" alt="GIF" class="hover-gif">
-            </div>
-            <div class="media-container">
-              <img src=".\static\images\selected\sunflowers\034.png" alt="Image" class="hover-image">
-              <img src=".\static\gifs\gems-e\sunflowers\34.gif" alt="GIF" class="hover-gif">
+            <div class="media-wrapper">
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\006.png" class="hover-image"><img src=".\static\gifs\gems-e\sunflowers\6.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\009.png" class="hover-image"><img src=".\static\gifs\gems-e\sunflowers\9.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\016.png" class="hover-image"><img src=".\static\gifs\gems-e\sunflowers\16.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\031.png" class="hover-image"><img src=".\static\gifs\gems-e\sunflowers\31.gif" class="hover-gif"></div>
+              <div class="media-container"><img src=".\static\images\selected\sunflowers\034.png" class="hover-image"><img src=".\static\gifs\gems-e\sunflowers\34.gif" class="hover-gif"></div>
             </div>
           </div>
+          
+          <div class="has-text-centered" style="margin-top: 20px;">
+            <button id="btn-prisme" class="button is-dark is-outlined is-rounded">
+              <span class="icon"><i class="fas fa-chevron-down"></i></span>
+              <span>Show More PRISM3D-E Scenes</span>
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
   <script>
+    // Handle GIF hover functionality
     document.querySelectorAll('.media-container').forEach(container => {
       const gif = container.querySelector('.hover-gif');
       const originalSrc = gif.src;
   
       container.addEventListener('mouseenter', () => {
-        gif.style.display = 'block';       // Show the GIF
-        gif.src = '';                      // Reset the GIF source
-        gif.src = originalSrc;             // Restart from beginning
+        gif.style.display = 'block';       
+        gif.src = '';                      
+        gif.src = originalSrc;             
       });
   
       container.addEventListener('mouseleave', () => {
-        gif.style.display = 'none';        // Hide the GIF
+        gif.style.display = 'none';        
       });
     });
+
+    // Handle separate "Show More" toggles
+    function setupToggle(btnId, targetId, prefix) {
+      document.getElementById(btnId).addEventListener('click', function() {
+        const target = document.getElementById(targetId);
+        const isHidden = target.style.display === 'none';
+        const icon = this.querySelector('.fas');
+        const textSpan = this.querySelector('span:last-child');
+        
+        target.style.display = isHidden ? 'block' : 'none';
+
+        if (isHidden) {
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+          textSpan.textContent = `Show Less ${prefix} Scenes`;
+        } else {
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+          textSpan.textContent = `Show More ${prefix} Scenes`;
+        }
+      });
+    }
+
+    setupToggle('btn-prism3d', 'extra-prism3d', 'PRISM3D');
+    setupToggle('btn-prisme', 'extra-prisme', 'PRISM3D-E');
   </script>
 </div>
 
 <div class="container" style="margin-top: 40px;">
-  <h2 class="title is-3">Comparisons</h2><br/>
+  <h2 class="title is-3">PRISM3D Comparisons</h2><br/>
   <div class="content has-text-justified">
     <p class="content has-text-justified" style="font-size: 16px; color: #333; text-align: center; margin-top: -10px; margin-right: 20px; margin-left: 20px;">
       We compare PRISM3D and PRISM3D-E against strong baselines including MPRNet, Restormer, EDI, E2NeRF, and EBAD-NeRF on both synthetic and real datasets. Our method produces sharper reconstructions with better detail preservation under extreme motion blur. Note that ExBluRF* and BAD-Gaussians* rely on sharp-image-based initialization and are excluded from real-world comparisons due to their impracticality.
     </p><br/>
     <div class="container_comop">
-      <center><h2 class="title is-size-4" style="color: black;">Real-World Dataset</h2></center><br/>
-      <center><img src=".\static\images\GEMS_comparisions_real.png" class="comparison-img" alt="comparison_1"></center>
+      <h3 class="title is-4 has-text-centered" style="color: black;">Real-World Dataset</h3>
+      <img src=".\static\images\GEMS_comparisions_real.png" class="comparison-img" alt="Real-world comparisons">
+      
       <br/><br/><br/>
-      <center><h2 class="title is-size-4" style="color: black;">Synthetic Dataset</h2></center><br/>
-      <center><img src=".\static\images\synthetic_comparisons.png" class="comparison-img" alt="comparison_2"></center>
+      
+      <h3 class="title is-4 has-text-centered" style="color: black;">Synthetic Dataset</h3>
+      <img src=".\static\images\synthetic_comparisons.png" class="comparison-img" alt="Synthetic comparisons">
     </div>
   </div>
 </div>
@@ -773,6 +670,7 @@
       <div class="column is-8">
         <div class="content">
           <p style="text-align: center;">
+            <strong>Contact:</strong> <a href="mailto:ee17d021@smail.iitm.ac.in">ee17d021@smail.iitm.ac.in</a>, <a href="mailto:kmitra@ee.iitm.ac.in">kmitra@ee.iitm.ac.in</a><br><br>
             Source code for this website is adapted from <a href="https://github.com/LingzheZhao/LingzheZhao.github.io/tree/main/BAD-Gaussians">Bad Gaussians</a>, 
             licensed under a 
             <a href="https://creativecommons.org/licenses/by-sa/4.0">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

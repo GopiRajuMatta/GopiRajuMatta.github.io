@@ -15,7 +15,7 @@ p{margin:0;color:var(--muted);font-size:.9rem}
 <input id="pw" type="password" autocomplete="current-password" placeholder="Password" required autofocus>
 <button>Open</button><p id="msg" role="status"></p></form>
 <script>
-const SALT = "/OVurj0zPNxax+nAkssdbw==", ITER = 250000;
+const SALT = "aiQ56TiUkcwpDqLEbW9s9A==", ITER = 250000;
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 async function derive(pw) {
   const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveBits"]);
